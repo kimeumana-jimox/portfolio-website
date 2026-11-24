@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kimeu — Portfolio</title>
-<meta name="description" content="Kimeu is a cybersecurity enthusiast based in Kenya.">
+<title>James Kimeu — Portfolio</title>
+<meta name="description" content="James Kimeu Mulei is a cybersecurity enthusiast in Nairobi, Kenya: SIEM monitoring, vulnerability assessment and ISO/IEC 27001 auditing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -56,7 +56,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--wine-bright); o
 }
 @media (min-width: 960px) {
   .wrap { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 5rem; padding-block: 0; }
-  .side { position: sticky; top: 0; height: 100vh; padding-block: 5.5rem 4rem; display: flex; flex-direction: column; }
+  .side { position: sticky; top: 0; height: 100vh; padding-block: 4.5rem 3rem; overflow-y: auto; display: flex; flex-direction: column; }
   main { padding-block: 5.5rem 6rem; }
 }
 
@@ -77,9 +77,9 @@ h1 .dot { color: var(--wine-bright); }
 }
 .status i { width: .5rem; height: .5rem; border-radius: 50%; background: var(--wine-bright); box-shadow: 0 0 0 4px rgba(214, 90, 118, .18); }
 
-nav.toc { display: none; margin-top: 3.5rem; }
+nav.toc { display: none; margin-top: 2.5rem; margin-bottom: 2rem; }
 @media (min-width: 960px) { nav.toc { display: block; } }
-nav.toc ol { list-style: none; padding: 0; margin: 0; display: grid; gap: .9rem; }
+nav.toc ol { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
 nav.toc a {
   display: inline-flex; align-items: center; gap: 1rem; text-decoration: none;
   font: 500 .75rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
@@ -152,6 +152,30 @@ section + section { margin-top: 5.5rem; }
 .skills li { color: var(--muted); font-size: .95rem; display: flex; gap: .6rem; }
 .skills li::before { content: ""; flex: none; width: .35rem; height: .35rem; margin-top: .62rem; background: var(--wine-bright); transform: rotate(45deg); }
 
+/* Experience */
+.jobs { list-style: none; padding: 0; margin: 0; display: grid; gap: 2.25rem; }
+.job { display: grid; grid-template-columns: minmax(0, 1fr); gap: .35rem 2rem; }
+@media (min-width: 640px) { .job { grid-template-columns: 8.5rem minmax(0, 1fr); } }
+.when { font: 400 .75rem/1.9 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.job h3 { font: 700 1.15rem/1.3 var(--display); margin: 0; }
+.job h3 .org { color: var(--wine-bright); font-weight: 500; }
+.job ul.points { margin: .6rem 0 .8rem; padding-left: 1.1rem; color: var(--muted); display: grid; gap: .35rem; max-width: 62ch; }
+.job ul.points li::marker { color: var(--wine-bright); }
+.also { margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: 1.5rem; display: grid; gap: .9rem; }
+.also h3 { font: 500 .75rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 .25rem; }
+.also .row { display: grid; grid-template-columns: minmax(0, 1fr); gap: .1rem 2rem; }
+@media (min-width: 640px) { .also .row { grid-template-columns: 8.5rem minmax(0, 1fr); } }
+.also .row p { margin: 0; color: var(--muted); }
+.also .row strong { color: var(--fg); font-weight: 500; }
+
+/* Credentials */
+.creds { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1rem; }
+.cred { border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem 1.4rem; display: grid; gap: .4rem; align-content: start; }
+.cred.key { background: linear-gradient(160deg, rgba(125, 29, 52, .3), rgba(21, 14, 16, .6) 60%); }
+.cred .kind { font: 500 .68rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--wine-bright); }
+.cred h3 { font: 700 1.1rem/1.3 var(--display); margin: 0; }
+.cred p { margin: 0; color: var(--muted); font-size: .92rem; }
+
 /* Contact / footer */
 .contact h2 { font: 800 clamp(2rem, 5vw, 2.8rem)/1.05 var(--display); letter-spacing: -.02em; margin: 0 0 1rem; text-wrap: balance; }
 .contact p { color: var(--muted); max-width: 52ch; margin: 0 0 1.5rem; }
@@ -163,17 +187,19 @@ footer a { color: var(--fg); }
 
 <div class="wrap">
   <header class="side">
-    <div class="handle">@kimeumana-jimox</div>
+    <div class="handle">James Kimeu Mulei</div>
     <h1>Kimeu<span class="dot">.</span></h1>
     <p class="role">Cybersecurity enthusiast.</p>
-    <p class="lede">I detect failed logins on Windows, think through threat models, and build systems where security is decided on the server, never in the browser.</p>
-    <div class="status"><i aria-hidden="true"></i>Based in Kenya · open to opportunities</div>
+    <p class="lede">SIEM monitoring, vulnerability assessment and incident response, backed by a degree in Cybercrime &amp; Forensics and an ISO/IEC 27001 Lead Auditor certificate.</p>
+    <div class="status"><i aria-hidden="true"></i>Nairobi, Kenya · open to opportunities</div>
 
     <nav class="toc" aria-label="Sections">
       <ol>
         <li><a href="#about" class="on">About</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#credentials">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ol>
     </nav>
@@ -183,16 +209,57 @@ footer a { color: var(--fg); }
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
         GitHub
       </a>
-      <a class="btn" href="#projects">See projects</a>
+      <a class="btn" href="https://www.linkedin.com/in/james-kimeu-5a3286246" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.18 0h13.64C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.18 1.15H1.18C.52 16 0 15.48 0 14.85V1.15zm4.94 12.24V6.17H2.54v7.22h2.4zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.01zm4.91 8.21V9.36c0-.22.02-.43.08-.58.17-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.86h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.27 0-1.84.7-2.16 1.19v.03h-.02l.02-.03V6.17h-2.4c.03.68 0 7.22 0 7.22h2.4z"/></svg>
+        LinkedIn
+      </a>
     </div>
   </header>
 
   <main>
     <section id="about" class="about" aria-label="About">
       <p class="eyebrow">About</p>
-      <p>I'm a <strong>cybersecurity enthusiast</strong> who learns by building. On the defensive side I practise endpoint monitoring: reading Windows Security logs, writing PowerShell detections and automating them with Task Scheduler. Next I want to take that into SIEM tooling such as Wazuh and Splunk.</p>
-      <p>I also apply security to real problems around me. Paper visitor books at apartment gates leak people's names and ID numbers, so I'm building <strong>SecureGate</strong> to replace them with access control, MFA and audit trails. Event tickets get faked and resold, so I built <strong>Tikiti</strong> with tamper-proof QR check-in.</p>
-      <p>In both, access rules live in the database, every sensitive action is logged, and I test the defences with race and volume tests instead of trusting them.</p>
+      <p>I'm a <strong>cybersecurity enthusiast</strong> studying Applied Computer Technology with a concentration in <strong>Cybercrime &amp; Forensics</strong> at United States International University – Africa.</p>
+      <p>I've worked on the defensive side at the <strong>ICT Authority Kenya</strong> and <strong>Konza Technopolis</strong>: watching security events in a SIEM, scanning for vulnerabilities, investigating alerts and writing up incidents. I'm also a certified <strong>ISO/IEC 27001:2022 Lead Auditor</strong>.</p>
+      <p>Outside work I build. My projects include a Windows failed-login detector and two platforms, SecureGate and Tikiti, where access rules live in the database and every sensitive action is logged. Martial arts and gaming keep me disciplined and curious, and I work best in a team under pressure.</p>
+    </section>
+
+    <section id="experience" aria-label="Experience">
+      <p class="eyebrow">Experience</p>
+      <ol class="jobs" reversed>
+        <li class="job">
+          <span class="when">Jun – Sep 2026</span>
+          <div>
+            <h3>Security Department Attachment · <span class="org">Konza Technopolis Development Authority</span></h3>
+            <ul class="points">
+              <li>Assisted with incident response and SIEM monitoring for cybersecurity operations.</li>
+              <li>Ran vulnerability assessments and helped enforce security policies.</li>
+              <li>Worked with smart city security frameworks and threat detection.</li>
+            </ul>
+            <ul class="tags"><li>SIEM</li><li>Incident response</li><li>Vulnerability assessment</li><li>Security policy</li></ul>
+          </div>
+        </li>
+        <li class="job">
+          <span class="when">Jan – Apr 2026</span>
+          <div>
+            <h3>Information Security Intern · <span class="org">ICT Authority Kenya</span></h3>
+            <ul class="points">
+              <li>Monitored network security events in FortiSIEM to detect and analyse threats.</li>
+              <li>Ran vulnerability scans and web application security assessments with Acunetix.</li>
+              <li>Investigated alerts, supported incident response and wrote detailed incident reports.</li>
+              <li>Produced weekly reports on detected threats, vulnerabilities and mitigations, with root-cause analysis and remediation advice.</li>
+              <li>Troubleshot network security issues before escalation.</li>
+            </ul>
+            <ul class="tags"><li>FortiSIEM</li><li>Acunetix</li><li>Threat analysis</li><li>Incident reporting</li></ul>
+          </div>
+        </li>
+      </ol>
+      <div class="also">
+        <h3>Also</h3>
+        <div class="row"><span class="when">Sep 2024 – Oct 2025</span><p><strong>Customer Service Representative, SEED Global Education.</strong> Raised university fair attendance by 20% and ran registration and check-in.</p></div>
+        <div class="row"><span class="when">Sep 2023 – Jul 2025</span><p><strong>Marketing &amp; PR Coordinator, HeForShe Club, USIU–Africa.</strong> Ran campaigns and social media to grow membership.</p></div>
+        <div class="row"><span class="when">2022 – 2025</span><p><strong>Volunteering.</strong> Study USA Fair, Dorothy's Children's Home, polling clerk in Mavoko constituency, and safety marshal at the WRC Safari Rally.</p></div>
+      </div>
     </section>
 
     <section id="projects" aria-label="Projects">
@@ -253,59 +320,72 @@ footer a { color: var(--fg); }
 
     <section id="skills" aria-label="Skills">
       <p class="eyebrow">Skills</p>
-      <p class="note">Draft list based on the tools used in my projects. Full skills list coming soon.</p>
       <div class="skills">
         <div>
-          <h3>Security</h3>
+          <h3>Security operations</h3>
           <ul>
-            <li>Row-level security and access control</li>
-            <li>Audit logging and tamper-evident records</li>
-            <li>MFA, rate limiting, replay prevention</li>
-            <li>Threat modelling and data minimisation</li>
+            <li>SIEM monitoring (FortiSIEM)</li>
+            <li>Incident response and reporting</li>
+            <li>Threat detection and analysis</li>
             <li>Windows event log analysis</li>
           </ul>
         </div>
         <div>
-          <h3>Backend &amp; data</h3>
+          <h3>Assessment &amp; governance</h3>
           <ul>
-            <li>PostgreSQL (schemas, functions, policies)</li>
-            <li>Supabase: Auth, Storage, Edge Functions</li>
-            <li>Node.js and Deno</li>
-            <li>Transactional outbox and idempotent workers</li>
+            <li>Vulnerability scanning</li>
+            <li>Web app security testing (Acunetix)</li>
+            <li>ISO/IEC 27001 auditing</li>
+            <li>Security policy enforcement</li>
           </ul>
         </div>
         <div>
-          <h3>Frontend</h3>
+          <h3>Development</h3>
           <ul>
-            <li>React and TypeScript</li>
-            <li>Vite</li>
-            <li>Tailwind CSS</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Payments &amp; messaging</h3>
-          <ul>
-            <li>M-Pesa Daraja</li>
-            <li>Paystack</li>
-            <li>Resend (email)</li>
-            <li>Africa's Talking (SMS)</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Testing</h3>
-          <ul>
-            <li>Vitest and node:test</li>
-            <li>PGlite and real-Postgres tests</li>
-            <li>Concurrency and volume tests</li>
+            <li>Python and PowerShell</li>
+            <li>JavaScript, HTML, CSS</li>
+            <li>ReactJS</li>
+            <li>Firebase and Supabase</li>
           </ul>
         </div>
         <div>
           <h3>Tools</h3>
           <ul>
             <li>Git and GitHub</li>
-            <li>PowerShell and Task Scheduler</li>
             <li>Vercel</li>
+            <li>Microsoft Office</li>
           </ul>
+        </div>
+        <div>
+          <h3>People</h3>
+          <ul>
+            <li>Public speaking</li>
+            <li>Leadership</li>
+            <li>Event coordination</li>
+            <li>Strategic communication</li>
+            <li>Collaboration and problem-solving</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="credentials" aria-label="Education and certifications">
+      <p class="eyebrow">Education</p>
+      <div class="creds">
+        <div class="cred key">
+          <span class="kind">Certification · 2025</span>
+          <h3>ISO/IEC 27001:2022 Lead Auditor</h3>
+          <p>Auditing information security management systems against ISO/IEC 27001.</p>
+        </div>
+        <div class="cred">
+          <span class="kind">Degree · 2022 – present</span>
+          <h3>BSc Applied Computer Technology</h3>
+          <p>Cybercrime &amp; Forensics concentration, United States International University – Africa, Nairobi.</p>
+        </div>
+        <div class="cred">
+          <span class="kind">Certification · 2024</span>
+          <h3>Introduction to Cybersecurity</h3>
+          <p>Foundations of threats, defences and security practice.</p>
         </div>
       </div>
     </section>
@@ -313,11 +393,14 @@ footer a { color: var(--fg); }
     <section id="contact" class="contact" aria-label="Contact">
       <p class="eyebrow">Contact</p>
       <h2>Have a project or a role in mind?</h2>
-      <p>The best way to reach me right now is through GitHub. I'm happy to talk about security monitoring, threat detection, or building secure systems.</p>
-      <a class="btn solid" href="https://github.com/kimeumana-jimox" target="_blank" rel="noopener">github.com/kimeumana-jimox</a>
+      <p>I'm looking for roles in security operations, vulnerability management and GRC. Reach me on LinkedIn, or see my code on GitHub.</p>
+      <div class="links" style="margin-top:0">
+        <a class="btn solid" href="https://www.linkedin.com/in/james-kimeu-5a3286246" target="_blank" rel="noopener">Message me on LinkedIn</a>
+        <a class="btn" href="https://github.com/kimeumana-jimox" target="_blank" rel="noopener">github.com/kimeumana-jimox</a>
+      </div>
     </section>
 
-    <footer>Designed and built by Kimeu · <a href="https://github.com/kimeumana-jimox" target="_blank" rel="noopener">@kimeumana-jimox</a></footer>
+    <footer>Designed and built by James Kimeu Mulei · <a href="https://github.com/kimeumana-jimox" target="_blank" rel="noopener">@kimeumana-jimox</a></footer>
   </main>
 </div>
 
