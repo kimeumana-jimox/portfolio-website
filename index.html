@@ -179,6 +179,12 @@ section + section { margin-top: 5.5rem; }
 /* Contact / footer */
 .contact h2 { font: 800 clamp(2rem, 5vw, 2.8rem)/1.05 var(--display); letter-spacing: -.02em; margin: 0 0 1rem; text-wrap: balance; }
 .contact p { color: var(--muted); max-width: 52ch; margin: 0 0 1.5rem; }
+.reach { display: grid; gap: .6rem; margin: 0 0 1.75rem; }
+.reach div { display: flex; flex-wrap: wrap; gap: .25rem 1rem; align-items: baseline; }
+.reach dt { font: 500 .72rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--wine-bright); width: 4.5rem; }
+.reach dd { margin: 0; font: 500 1.05rem/1.4 var(--body); user-select: all; overflow-wrap: anywhere; }
+.reach a { text-decoration: none; border-bottom: 1px solid var(--line); }
+.reach a:hover { border-color: var(--wine-bright); }
 footer { margin-top: 5rem; font: 400 .75rem/1.6 var(--mono); color: var(--muted); }
 footer a { color: var(--fg); }
 </style>
@@ -219,7 +225,7 @@ footer a { color: var(--fg); }
   <main>
     <section id="about" class="about" aria-label="About">
       <p class="eyebrow">About</p>
-      <p>I'm a <strong>cybersecurity enthusiast</strong> studying Applied Computer Technology with a concentration in <strong>Cybercrime &amp; Forensics</strong> at United States International University – Africa.</p>
+      <p>I'm a <strong>cybersecurity enthusiast</strong> with a degree in Applied Computer Technology, concentrating in <strong>Cybercrime &amp; Forensics</strong>, from United States International University – Africa.</p>
       <p>I've worked on the defensive side at the <strong>ICT Authority Kenya</strong> and <strong>Konza Technopolis</strong>: watching security events in a SIEM, scanning for vulnerabilities, investigating alerts and writing up incidents. I'm also a certified <strong>ISO/IEC 27001:2022 Lead Auditor</strong>.</p>
       <p>Outside work I build. My projects include a Windows failed-login detector and two platforms, SecureGate and Tikiti, where access rules live in the database and every sensitive action is logged. Martial arts and gaming keep me disciplined and curious, and I work best in a team under pressure.</p>
     </section>
@@ -378,7 +384,7 @@ footer a { color: var(--fg); }
           <p>Auditing information security management systems against ISO/IEC 27001.</p>
         </div>
         <div class="cred">
-          <span class="kind">Degree · 2022 – present</span>
+          <span class="kind">Degree · Completed</span>
           <h3>BSc Applied Computer Technology</h3>
           <p>Cybercrime &amp; Forensics concentration, United States International University – Africa, Nairobi.</p>
         </div>
@@ -393,7 +399,11 @@ footer a { color: var(--fg); }
     <section id="contact" class="contact" aria-label="Contact">
       <p class="eyebrow">Contact</p>
       <h2>Hiring a Cybersecurity or SOC Analyst?</h2>
-      <p>I'm looking for Cybersecurity Analyst and SOC Analyst roles, and work in security operations, vulnerability management and GRC. Reach me on LinkedIn, or see my code on GitHub.</p>
+      <p>I'm looking for Cybersecurity Analyst and SOC Analyst roles, and work in security operations, vulnerability management and GRC. Email or call me, message me on LinkedIn, or see my code on GitHub.</p>
+      <dl class="reach">
+        <div><dt>Email</dt><dd><a href="mailto:Kimeujames237@gmail.com">Kimeujames237@gmail.com</a></dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+254707090201">+254 707 090 201</a></dd></div>
+      </dl>
       <div class="links" style="margin-top:0">
         <a class="btn solid" href="https://www.linkedin.com/in/james-kimeu-5a3286246" target="_blank" rel="noopener">Message me on LinkedIn</a>
         <a class="btn" href="https://github.com/kimeumana-jimox" target="_blank" rel="noopener">github.com/kimeumana-jimox</a>
