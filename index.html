@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kimeu — Portfolio</title>
+<meta name="description" content="Kimeu is a cybersecurity enthusiast based in Kenya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html, body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* Layout: sticky identity column on the left, scrolling work on the right; one column on phones.
+   Deliberately single-theme: burgundy on near-black, as requested. */
+:root {
+  --ink: #0b0809;          /* page ground, warm black */
+  --surface: #150e10;      /* raised panels */
+  --line: #2c1a1f;         /* hairlines */
+  --fg: #f1e7e9;           /* primary text */
+  --muted: #a8959a;        /* secondary text */
+  --wine: #7d1d34;         /* burgundy fill */
+  --wine-bright: #d65a76;  /* burgundy for text and focus on black */
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  background: var(--ink);
+  color: var(--fg);
+  font: 400 1rem/1.65 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(60rem 40rem at -10% -10%, rgba(125, 29, 52, .38), transparent 60%),
+    radial-gradient(40rem 30rem at 110% 110%, rgba(125, 29, 52, .18), transparent 60%);
+}
+::selection { background: var(--wine); color: var(--fg); }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--wine-bright); outline-offset: 3px; border-radius: 4px; }
+
+.wrap {
+  position: relative; z-index: 1;
+  max-width: 72rem; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem;
+  padding-block: 3.5rem 4rem;
+}
+@media (min-width: 960px) {
+  .wrap { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 5rem; padding-block: 0; }
+  .side { position: sticky; top: 0; height: 100vh; padding-block: 5.5rem 4rem; display: flex; flex-direction: column; }
+  main { padding-block: 5.5rem 6rem; }
+}
+
+/* ---------- Left column ---------- */
+.handle { font: 500 .8rem/1 var(--mono); color: var(--wine-bright); letter-spacing: .04em; }
+h1 {
+  font: 800 clamp(3.2rem, 9vw, 5.2rem)/.92 var(--display);
+  letter-spacing: -.035em; margin: .9rem 0 0;
+}
+h1 .dot { color: var(--wine-bright); }
+.role { font: 500 1.2rem/1.35 var(--display); margin: 1.1rem 0 0; max-width: 22ch; text-wrap: balance; }
+.lede { color: var(--muted); margin: 1rem 0 0; max-width: 34ch; }
+
+.status {
+  display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.6rem;
+  font: 400 .78rem/1 var(--mono); color: var(--muted);
+  border: 1px solid var(--line); border-radius: 999px; padding: .5rem .8rem;
+}
+.status i { width: .5rem; height: .5rem; border-radius: 50%; background: var(--wine-bright); box-shadow: 0 0 0 4px rgba(214, 90, 118, .18); }
+
+nav.toc { display: none; margin-top: 3.5rem; }
+@media (min-width: 960px) { nav.toc { display: block; } }
+nav.toc ol { list-style: none; padding: 0; margin: 0; display: grid; gap: .9rem; }
+nav.toc a {
+  display: inline-flex; align-items: center; gap: 1rem; text-decoration: none;
+  font: 500 .75rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+nav.toc a::before { content: ""; height: 1px; width: 2rem; background: currentColor; transition: width .25s ease, background .25s ease; }
+nav.toc a:hover, nav.toc a.on { color: var(--fg); }
+nav.toc a:hover::before, nav.toc a.on::before { width: 4rem; background: var(--wine-bright); }
+
+.links { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+@media (min-width: 960px) { .links { margin-top: auto; } }
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem; text-decoration: none;
+  font: 500 .85rem/1 var(--body); padding: .75rem 1rem; border-radius: 8px;
+  border: 1px solid var(--line); color: var(--fg); background: transparent;
+  transition: border-color .2s ease, background .2s ease;
+}
+.btn:hover { border-color: var(--wine-bright); }
+.btn.solid { background: var(--wine); border-color: var(--wine); }
+.btn.solid:hover { background: #932340; border-color: #932340; }
+.btn svg { width: 1rem; height: 1rem; fill: currentColor; }
+
+/* ---------- Right column ---------- */
+section { scroll-margin-top: 2rem; }
+section + section { margin-top: 5.5rem; }
+.eyebrow {
+  display: flex; align-items: center; gap: .9rem; margin: 0 0 1.75rem;
+  font: 500 .75rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--wine-bright);
+}
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+@media (min-width: 960px) { .eyebrow { display: none; } }
+
+.about p { color: var(--muted); margin: 0 0 1rem; max-width: 62ch; }
+.about strong { color: var(--fg); font-weight: 500; }
+
+/* Projects */
+.projects { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+.proj {
+  position: relative; display: grid; gap: .75rem;
+  padding: 1.5rem; border-radius: 12px; border: 1px solid transparent;
+  transition: background .25s ease, border-color .25s ease;
+}
+.proj:hover { background: rgba(21, 14, 16, .85); border-color: var(--line); }
+.proj-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1rem; }
+.proj h3 { font: 700 1.35rem/1.2 var(--display); letter-spacing: -.01em; margin: 0; }
+.proj h3 a { text-decoration: none; }
+.proj h3 a::after { content: ""; position: absolute; inset: 0; border-radius: 12px; }
+.proj h3 .arrow { display: inline-block; color: var(--wine-bright); transition: transform .2s ease; margin-left: .25rem; }
+.proj:hover h3 .arrow { transform: translate(3px, -3px); }
+.proj:hover h3 { color: var(--wine-bright); }
+.repo { font: 400 .75rem/1.2 var(--mono); color: var(--muted); }
+.proj p { color: var(--muted); margin: 0; max-width: 62ch; }
+.facts { display: flex; flex-wrap: wrap; gap: .4rem 1.25rem; margin: 0; padding: 0; list-style: none; font: 400 .78rem/1.4 var(--mono); color: var(--fg); }
+.facts li::before { content: "› "; color: var(--wine-bright); }
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+.tags li {
+  font: 500 .72rem/1 var(--mono); padding: .4rem .6rem; border-radius: 999px;
+  color: #f3c3cf; background: rgba(125, 29, 52, .35);
+}
+.proj.featured { border-color: var(--line); background: linear-gradient(160deg, rgba(125, 29, 52, .22), rgba(21, 14, 16, .6) 55%); }
+.badge { font: 500 .68rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--wine-bright); }
+
+/* Skills */
+.note {
+  font: 400 .78rem/1.5 var(--mono); color: var(--muted);
+  border-left: 2px solid var(--wine); padding: .1rem 0 .1rem .9rem; margin: 0 0 1.75rem; max-width: 62ch;
+}
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 2rem 2.5rem; }
+.skills h3 { font: 700 1rem/1.2 var(--display); margin: 0 0 .8rem; }
+.skills ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+.skills li { color: var(--muted); font-size: .95rem; display: flex; gap: .6rem; }
+.skills li::before { content: ""; flex: none; width: .35rem; height: .35rem; margin-top: .62rem; background: var(--wine-bright); transform: rotate(45deg); }
+
+/* Contact / footer */
+.contact h2 { font: 800 clamp(2rem, 5vw, 2.8rem)/1.05 var(--display); letter-spacing: -.02em; margin: 0 0 1rem; text-wrap: balance; }
+.contact p { color: var(--muted); max-width: 52ch; margin: 0 0 1.5rem; }
+footer { margin-top: 5rem; font: 400 .75rem/1.6 var(--mono); color: var(--muted); }
+footer a { color: var(--fg); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="side">
+    <div class="handle">@kimeumana-jimox</div>
+    <h1>Kimeu<span class="dot">.</span></h1>
+    <p class="role">Cybersecurity enthusiast.</p>
+    <p class="lede">I detect failed logins on Windows, think through threat models, and build systems where security is decided on the server, never in the browser.</p>
+    <div class="status"><i aria-hidden="true"></i>Based in Kenya · open to opportunities</div>
+
+    <nav class="toc" aria-label="Sections">
+      <ol>
+        <li><a href="#about" class="on">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
+
+    <div class="links">
+      <a class="btn solid" href="https://github.com/kimeumana-jimox" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+      <a class="btn" href="#projects">See projects</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="about" aria-label="About">
+      <p class="eyebrow">About</p>
+      <p>I'm a <strong>cybersecurity enthusiast</strong> who learns by building. On the defensive side I practise endpoint monitoring: reading Windows Security logs, writing PowerShell detections and automating them with Task Scheduler. Next I want to take that into SIEM tooling such as Wazuh and Splunk.</p>
+      <p>I also apply security to real problems around me. Paper visitor books at apartment gates leak people's names and ID numbers, so I'm building <strong>SecureGate</strong> to replace them with access control, MFA and audit trails. Event tickets get faked and resold, so I built <strong>Tikiti</strong> with tamper-proof QR check-in.</p>
+      <p>In both, access rules live in the database, every sensitive action is logged, and I test the defences with race and volume tests instead of trusting them.</p>
+    </section>
+
+    <section id="projects" aria-label="Projects">
+      <p class="eyebrow">Projects</p>
+      <ul class="projects">
+        <li class="proj featured">
+          <div class="proj-head">
+            <h3><a href="https://github.com/kimeumana-jimox/invitation-management-system" target="_blank" rel="noopener">SecureGate<span class="arrow" aria-hidden="true">↗</span></a></h3>
+            <span class="badge">Featured · in progress</span>
+          </div>
+          <p>Visitor and rental management for hostels and apartment complexes in Kenya. Tenants invite visitors with a QR code or one-time PIN, guards verify and log entry and exit, and landlords manage properties, staff and audit trails. Designed with Kenya's Data Protection Act, 2019 in mind.</p>
+          <ul class="facts">
+            <li>3 apps: tenant &amp; guard portal, landlord, admin</li>
+            <li>121 database tests, incl. a 400,000-row volume test</li>
+            <li>MFA for privileged accounts</li>
+          </ul>
+          <ul class="tags">
+            <li>TypeScript</li><li>React</li><li>Vite</li><li>Supabase</li><li>PostgreSQL RLS</li><li>Edge Functions</li><li>Resend</li><li>Africa's Talking</li>
+          </ul>
+          <span class="repo">invitation-management-system</span>
+        </li>
+
+        <li class="proj">
+          <div class="proj-head">
+            <h3><a href="https://github.com/kimeumana-jimox/tikkiti" target="_blank" rel="noopener">Tikiti<span class="arrow" aria-hidden="true">↗</span></a></h3>
+            <span class="badge">Built &amp; tested</span>
+          </div>
+          <p>Event ticketing for Kenya. Customers find events and pay with M-Pesa or card, organisers manage ticket types, promo codes and staff, and gate staff scan a QR code to get a clear CHECKED IN or ALREADY CHECKED IN. Resale goes through the platform so tickets stay genuine.</p>
+          <ul class="facts">
+            <li>4 areas: client, organiser, operations, gate</li>
+            <li>Prices and admission enforced in Postgres</li>
+            <li>Parallel race tests</li>
+          </ul>
+          <ul class="tags">
+            <li>React 19</li><li>TypeScript</li><li>Tailwind</li><li>Supabase</li><li>M-Pesa Daraja</li><li>Paystack</li><li>Vitest</li>
+          </ul>
+          <span class="repo">tikkiti</span>
+        </li>
+
+        <li class="proj">
+          <div class="proj-head">
+            <h3><a href="https://github.com/kimeumana-jimox/windows-failed-login-detector" target="_blank" rel="noopener">Windows Failed Login Detector<span class="arrow" aria-hidden="true">↗</span></a></h3>
+            <span class="badge">Security lab</span>
+          </div>
+          <p>A lightweight intrusion-detection lab. A PowerShell script watches the Security log for failed logons (Event ID 4625), saves evidence and a screenshot, and raises a notification once a threshold is passed. Task Scheduler runs it automatically.</p>
+          <ul class="facts">
+            <li>Event IDs 4625 &amp; 4624</li>
+            <li>Evidence capture + alerting</li>
+            <li>Next: SIEM forwarding (Wazuh, Splunk)</li>
+          </ul>
+          <ul class="tags">
+            <li>PowerShell</li><li>Event Viewer</li><li>Task Scheduler</li><li>Windows Security Logs</li>
+          </ul>
+          <span class="repo">windows-failed-login-detector</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills" aria-label="Skills">
+      <p class="eyebrow">Skills</p>
+      <p class="note">Draft list based on the tools used in my projects. Full skills list coming soon.</p>
+      <div class="skills">
+        <div>
+          <h3>Security</h3>
+          <ul>
+            <li>Row-level security and access control</li>
+            <li>Audit logging and tamper-evident records</li>
+            <li>MFA, rate limiting, replay prevention</li>
+            <li>Threat modelling and data minimisation</li>
+            <li>Windows event log analysis</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Backend &amp; data</h3>
+          <ul>
+            <li>PostgreSQL (schemas, functions, policies)</li>
+            <li>Supabase: Auth, Storage, Edge Functions</li>
+            <li>Node.js and Deno</li>
+            <li>Transactional outbox and idempotent workers</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Frontend</h3>
+          <ul>
+            <li>React and TypeScript</li>
+            <li>Vite</li>
+            <li>Tailwind CSS</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Payments &amp; messaging</h3>
+          <ul>
+            <li>M-Pesa Daraja</li>
+            <li>Paystack</li>
+            <li>Resend (email)</li>
+            <li>Africa's Talking (SMS)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Testing</h3>
+          <ul>
+            <li>Vitest and node:test</li>
+            <li>PGlite and real-Postgres tests</li>
+            <li>Concurrency and volume tests</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <ul>
+            <li>Git and GitHub</li>
+            <li>PowerShell and Task Scheduler</li>
+            <li>Vercel</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-label="Contact">
+      <p class="eyebrow">Contact</p>
+      <h2>Have a project or a role in mind?</h2>
+      <p>The best way to reach me right now is through GitHub. I'm happy to talk about security monitoring, threat detection, or building secure systems.</p>
+      <a class="btn solid" href="https://github.com/kimeumana-jimox" target="_blank" rel="noopener">github.com/kimeumana-jimox</a>
+    </section>
+
+    <footer>Designed and built by Kimeu · <a href="https://github.com/kimeumana-jimox" target="_blank" rel="noopener">@kimeumana-jimox</a></footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  if (!('IntersectionObserver' in window) || !links.length) return;
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.classList.remove('on'); });
+      var a = byId[e.target.id]; if (a) a.classList.add('on');
+    });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  Object.keys(byId).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+})();
+</script>
+</body>
+</html>
